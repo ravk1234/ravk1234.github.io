@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.contactHeading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contactHeading h1 {
+  text-transform: uppercase;
+}
+
+form input {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+form input:focus {
+  background-color: white;
+}
+
+.contactHeading form {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+}
+
+.contactField {
+  display: flex;
+  flex-direction: row;
+}
+
+#nameDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#emailDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#phoneDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#messageDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#nameDiv label {
+  display: flex;
+  justify-self: flex-start;
+}
+
+#emailDiv label {
+  display: flex;
+  justify-self: flex-start;
+}
+#phoneDiv label {
+  display: flex;
+  justify-self: flex-start;
+}
+
+#messageDiv label {
+  display: flex;
+  justify-self: flex-start;
+}
+
+.contactHeading form #messageDiv textarea {
+  background-color: #e8e8e8;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.contactHeading form #messageDiv textarea:focus {
+  background-color: white;
+}
+
+.contactHeading form #buttonDiv input {
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  text-transform: uppercase;
+}
+
+.contactHeading form #buttonDiv input:hover {
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
+
+.emptyDiv {
+  height: 20px;
+}
+
+.emptyDiv1 {
+  width: 20px;
+}
+
+.emptyDiv2 {
+  height: 10px;
+}
+
+@media screen and (max-device-width: 480px) {
+  .contactField {
+    display: flex;
+    justify-content: center;
+  }
+
+  form input {
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    height: 40px;
+    width: 27vw;
+    /* margin-top: 10px; */
+  }
+
+  #messageDiv textarea {
+    width: 90vw;
+  }
+
+  .emptyDiv1 {
+    width: 15px;
+  }
+
+  .emptyDiv2 {
+    height: 10px;
+  }
+}

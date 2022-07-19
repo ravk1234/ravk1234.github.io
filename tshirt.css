@@ -1,0 +1,396 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  width: 100%;
+  height: 50px;
+}
+
+#navList {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+#navList .box {
+  width: 50px;
+  height: 10px;
+}
+
+#navList li a:hover {
+  text-decoration: underline;
+}
+
+#navList .box:hover {
+  width: 50px;
+  height: 50px;
+  background: honeydew;
+}
+
+#navList li a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+}
+
+#navList li a:hover {
+  color: brown;
+}
+
+#dropDown li {
+}
+
+#navList li {
+  padding-top: 15px;
+  margin-left: 10px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.details img {
+  width: 200px;
+  height: 250px;
+}
+
+.productDetails {
+  list-style: none;
+
+  margin-block-start: 50px;
+  margin-block-end: 50px;
+}
+
+#list1 {
+  display: flex;
+  flex-direction: row;
+}
+
+#list2 {
+  display: flex;
+}
+
+.details ul {
+  list-style: none;
+}
+
+.details1 {
+  margin-top: 100px;
+}
+
+.details1 img {
+  width: 200px;
+  height: 250px;
+}
+
+#bannerImg {
+  width: 100%;
+}
+
+#list1 #productName {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  color: green;
+}
+
+#list1 #productType {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: grey;
+}
+
+#list1 #productValue {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+}
+
+#list2 #productName {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  color: green;
+}
+
+#list2 #productType {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: grey;
+}
+
+#list2 #productValue {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+}
+
+.details #list2 {
+  /* margin-top: 50px;
+  margin-bottom: 20px;
+  padding-top: 100px; */
+  /* margin-left: 30px; */
+}
+
+/* #productImg {
+  width: 230px;
+  height: 295px;
+  background: url("./images/image (1).png") no-repeat;
+} */
+/* .clearTag {
+  clear: left;
+} */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e8e8e8;
+  /* width: 100%;
+  height: 90%; */
+  margin-top: 50px;
+  height: 20vh;
+  /* width: 1340px; */
+}
+
+.iconDiv ul {
+  list-style: none;
+}
+
+.footer .iconDiv ul img {
+  width: 50px;
+  height: 50px;
+}
+
+.iconDiv {
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: row;
+  /* text-align: center; */
+}
+
+.iconDiv ul {
+  display: flex;
+  flex-direction: row;
+  /* margin-left: 420px; */
+  /* float: left; */
+}
+
+.footer .iconDiv li {
+  /* float: right; */
+  padding-left: 40px;
+  bottom: 0;
+  position: relative;
+  transition: bottom 0.5s ease-in;
+}
+
+.iconDiv li:hover {
+  bottom: 10px;
+}
+
+/* .iconDiv li {
+  width: 30%;
+} */
+.footerText {
+  background-color: #e8e8e8;
+  /* position: absolute;
+  margin-top: 90px;
+  left: 450px; */
+}
+
+.footerText ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+.footerText li {
+  /* float: left; */
+  padding-left: 40px;
+  font-size: 20px;
+}
+
+.clearTag1 {
+  clear: both;
+}
+
+.footerText a {
+  text-decoration: none;
+}
+
+.footerText a:hover {
+  color: darkorange;
+}
+
+.emptyDiv {
+  width: 20px;
+}
+
+.emptyDiv1 {
+  height: 20px;
+}
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-device-width: 480px) {
+  #bannerImg {
+    width: 100%;
+    height: 35vh;
+  }
+
+  .details {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile img {
+    width: 100px;
+    height: 150px;
+  }
+
+  .productDetails {
+    list-style: none;
+    /* float: left; */
+    margin-block-start: 50px;
+    margin-block-end: 50px;
+    /* text-align: center; */
+  }
+
+  #list1 {
+    display: flex;
+    flex-direction: row;
+    height: 45vh;
+  }
+
+  #list2 {
+    display: flex;
+    height: 45vh;
+  }
+
+  .mobile ul {
+    list-style: none;
+  }
+
+  #list1 #productName {
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    color: green;
+  }
+
+  #list1 #productType {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    color: grey;
+  }
+
+  #list1 #productValue {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-weight: bold;
+  }
+
+  #list2 #productName {
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    color: green;
+  }
+
+  #list2 #productType {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    color: grey;
+  }
+
+  #list2 #productValue {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-weight: bold;
+  }
+
+  .footer {
+    background-color: #e8e8e8;
+    margin-top: 100px;
+    height: 150px;
+  }
+
+  .iconDiv ul {
+    list-style: none;
+  }
+
+  .footer .iconDiv ul img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconDiv {
+    background-color: #e8e8e8;
+  }
+
+  .iconDiv ul {
+    /* margin-left: 420px; */
+    /* float: left; */
+  }
+
+  .footer .iconDiv li {
+    /* float: right; */
+    padding-left: 30px;
+    bottom: 0;
+    /* position: relative; */
+    display: flex;
+    transition: bottom 0.5s ease-in;
+  }
+
+  .iconDiv li:hover {
+    bottom: 10px;
+  }
+
+  .footerText {
+    background-color: #e8e8e8;
+    position: absolute;
+    margin-top: 90px;
+    /* left: 450px; */
+  }
+
+  .footerText ul {
+    list-style: none;
+  }
+  .footerText li {
+    /* float: left; */
+    padding-left: 40px;
+    font-size: 20px;
+  }
+
+  .footerText a {
+    text-decoration: none;
+  }
+
+  .footerText a:hover {
+    color: darkorange;
+  }
+}
