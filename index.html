@@ -20,7 +20,7 @@
             <a href="#contact">Contact</a>
             <a href="#blogs">Blogs</a>
           </nav>
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">&#9790;</button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode"></button>
         </div>
       </div>
     </header>
@@ -72,14 +72,27 @@
         const root = document.documentElement;
         const themeToggle = document.getElementById("theme-toggle");
         const yearEl = document.getElementById("year");
+        const storage = {
+          get(key) {
+            try {
+              return localStorage.getItem(key);
+            } catch {
+              return null;
+            }
+          },
+          set(key, value) {
+            try {
+              localStorage.setItem(key, value);
+            } catch {}
+          }
+        };
 
         function setTheme(theme) {
           root.setAttribute("data-theme", theme);
-          themeToggle.textContent = theme === "light" ? "\u2600" : "\u263E";
-          localStorage.setItem("theme", theme);
+          storage.set("theme", theme);
         }
 
-        const savedTheme = localStorage.getItem("theme");
+        const savedTheme = storage.get("theme");
         setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark");
 
         themeToggle.addEventListener("click", () => {
