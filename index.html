@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ravikant k. | Portfolio</title>
+    <title>Ravikant K. | Portfolio</title>
     <meta
       name="description"
       content="Personal portfolio of Ravikant K. featuring bio, projects, and contact details."
@@ -20,9 +20,7 @@
             <a href="#contact">Contact</a>
             <a href="#blogs">Blogs</a>
           </nav>
-          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">
-            🌙
-          </button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">&#9790;</button>
         </div>
       </div>
     </header>
@@ -31,9 +29,7 @@
       <section class="intro-block">
         <p class="role">Software Developer</p>
         <h1>Ravikant K.</h1>
-        <p class="tagline">
-          Tinkering and Experimenting
-        </p>
+        <p class="tagline">Tinkering and Experimenting</p>
       </section>
 
       <section id="about" class="content-section">
@@ -46,8 +42,11 @@
 
       <section id="contact" class="content-section">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:youremail@example.com">rkant4112@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/ravk1234" target="_blank" rel="noopener noreferrer">@ravk1234</a></p>
+        <p>Email: <a href="mailto:rkant4112@gmail.com">rkant4112@gmail.com</a></p>
+        <p>
+          GitHub:
+          <a href="https://github.com/ravk1234" target="_blank" rel="noopener noreferrer">@ravk1234</a>
+        </p>
       </section>
 
       <section id="blogs" class="content-section">
@@ -65,32 +64,31 @@
     </main>
 
     <footer class="site-footer container">
-      <small>© <span id="year"></span> Ravikant K.</small>
+      <small>&copy; <span id="year"></span> Ravikant K.</small>
     </footer>
 
     <script>
-      const root = document.documentElement;
-      const themeToggle = document.getElementById("theme-toggle");
-      const savedTheme = localStorage.getItem("theme");
+      (() => {
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("theme-toggle");
+        const yearEl = document.getElementById("year");
 
-      function setTheme(theme) {
-        root.setAttribute("data-theme", theme);
-        themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
-        localStorage.setItem("theme", theme);
-      }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          themeToggle.textContent = theme === "light" ? "\u2600" : "\u263E";
+          localStorage.setItem("theme", theme);
+        }
 
-      if (savedTheme === "light" || savedTheme === "dark") {
-        setTheme(savedTheme);
-      } else {
-        setTheme("dark");
-      }
+        const savedTheme = localStorage.getItem("theme");
+        setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark");
 
-      themeToggle.addEventListener("click", () => {
-        const current = root.getAttribute("data-theme");
-        setTheme(current === "dark" ? "light" : "dark");
-      });
+        themeToggle.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme");
+          setTheme(current === "dark" ? "light" : "dark");
+        });
 
-      document.getElementById("year").textContent = new Date().getFullYear();
+        yearEl.textContent = new Date().getFullYear();
+      })();
     </script>
   </body>
 </html>
