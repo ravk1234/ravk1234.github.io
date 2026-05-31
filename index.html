@@ -3,31 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ravi Kumar | Portfolio</title>
+    <title>Ravikant k. | Portfolio</title>
     <meta
       name="description"
-      content="Personal portfolio of Ravi Kumar featuring bio, projects, and contact details."
+      content="Personal portfolio of Ravikant K. featuring bio, projects, and contact details."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="#home">Ravi Kumar</a>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="#blogs">Blogs</a>
-        </nav>
+        <a class="brand" href="#home">Ravikant K.</a>
+        <div class="nav-right">
+          <nav>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#blogs">Blogs</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">
+            🌙
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="home" class="container main">
       <section class="intro-block">
         <p class="role">Software Developer</p>
-        <h1>Ravi Kumar</h1>
+        <h1>Ravikant K.</h1>
         <p class="tagline">
-          I build useful, reliable web products and share what I learn.
+          Tinkering and Experimenting
         </p>
       </section>
 
@@ -41,25 +46,50 @@
 
       <section id="contact" class="content-section">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p>Email: <a href="mailto:youremail@example.com">rkant4112@gmail.com</a></p>
         <p>GitHub: <a href="https://github.com/ravk1234" target="_blank" rel="noopener noreferrer">@ravk1234</a></p>
       </section>
 
       <section id="blogs" class="content-section">
         <h2>Blogs</h2>
         <ul class="blog-list">
-          <li><a href="#" target="_blank" rel="noopener noreferrer">How I build production-ready side projects</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">Lessons from shipping with GitHub Pages</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">Clean frontend structure for small teams</a></li>
+          <li>
+            <a href="blog/qwen_tts.html" target="_blank" rel="noopener noreferrer">Experimenting with Qwen3 TTS</a>
+            <p>
+              A hands-on story of fine-tuning Qwen3 TTS in Hindi with limited GPU credits, LoRA runs on 0.6B/1.7B,
+              and real-world quality tradeoffs after quantization.
+            </p>
+          </li>
         </ul>
       </section>
     </main>
 
     <footer class="site-footer container">
-      <small>© <span id="year"></span> Ravi Kumar</small>
+      <small>© <span id="year"></span> Ravikant K.</small>
     </footer>
 
     <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const savedTheme = localStorage.getItem("theme");
+
+      function setTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
+        localStorage.setItem("theme", theme);
+      }
+
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      } else {
+        setTheme("dark");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>

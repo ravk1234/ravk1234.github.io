@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experimenting with Qwen3 TTS | Ravi Kumar</title>
+    <meta
+      name="description"
+      content="Experimenting with Qwen3 TTS: fine-tuning journey, LoRA experiments, and quantization tradeoffs."
+    />
+    <style>
+      :root {
+        --bg: #0b0f14;
+        --surface: #10161d;
+        --text: #e7edf5;
+        --muted: #9ba9bb;
+        --line: #202a36;
+        --link: #9cc5ff;
+        --header-bg: rgba(11, 15, 20, 0.92);
+      }
+
+      [data-theme="light"] {
+        --bg: #f7f9fc;
+        --surface: #ffffff;
+        --text: #17212b;
+        --muted: #556273;
+        --line: #d7e0ea;
+        --link: #165ecf;
+        --header-bg: rgba(247, 249, 252, 0.92);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      .container {
+        width: min(760px, 92%);
+        margin: 0 auto;
+      }
+
+      .site-header {
+        border-bottom: 1px solid var(--line);
+        background: var(--header-bg);
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(8px);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.9rem 0;
+      }
+
+      .brand {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 6px;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.88rem;
+        cursor: pointer;
+      }
+
+      main.container {
+        padding: 2rem 0 3rem;
+      }
+
+      .back {
+        display: inline-block;
+        margin-bottom: 1.2rem;
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        line-height: 1.2;
+      }
+
+      .meta {
+        color: var(--muted);
+        margin-bottom: 1.1rem;
+      }
+
+      article {
+        border-top: 1px solid var(--line);
+        padding-top: 1rem;
+      }
+
+      p {
+        margin: 0 0 1rem;
+      }
+
+      a {
+        color: var(--link);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="../index.html">Ravi Kumar</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">🌙</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <a class="back" href="../index.html#blogs">← Back to blogs</a>
+      <h1>Experimenting with Qwen3 TTS</h1>
+      <p class="meta">By Ravi Kumar</p>
+      <article>
+        <p>
+          It was the second week of April. I had left my incubation role at a
+          college and was figuring out what to do next. I started visiting the
+          iStart incubation center regularly and exploring what founders were
+          building there.
+        </p>
+        <p>
+          I started working at a startup on the third floor. The work was mostly
+          WordPress development, so it was straightforward. Through that, I met
+          people from other startups, including a founder from Aguken, a voice AI
+          startup building voice agents for FMCG brands.
+        </p>
+        <p>
+          He suggested I try fine-tuning Qwen3 TTS in Hindi as an experiment. I
+          jumped in directly and began the journey. Since I did not have access to
+          strong GPU resources, I used Lightning AI credits for new users,
+          prepared a Python notebook, ran tests, and generated my first audio
+          sample.
+        </p>
+        <p>
+          The result felt great. The audio quality was surprisingly strong. After
+          that, I went deeper: LoRA fine-tuning experiments on both Qwen3 0.6B and
+          Qwen3 1.7B TTS.
+        </p>
+        <p>
+          I started with a smaller run on around 4K dataset rows. Training loss
+          was around 7-8, but the generated audio was still quite decent. Later, I
+          trained the 0.6B model on the full dataset and then tried quantization
+          to reduce VRAM usage.
+        </p>
+        <p>
+          Quantization did reduce resource needs, but it also lowered quality a
+          bit. We eventually published the model on Hugging Face as well.
+        </p>
+        <p>
+          Here’s the link if you want to check it out:
+          <a href="https://huggingface.co/aguken-ai/Qwen-3-TTS-12Hz-0.6B-Base-hi-LoRA-Finetuned-BNB-NF4" target="_blank" rel="noopener noreferrer">Hugging Face Model</a>.
+        </p>
+      </article>
+    </main>
+
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const savedTheme = localStorage.getItem("theme");
+
+      function setTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
+        localStorage.setItem("theme", theme);
+      }
+
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      } else {
+        setTheme("dark");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

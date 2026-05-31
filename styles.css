@@ -5,6 +5,17 @@
   --muted: #9ba9bb;
   --line: #202a36;
   --link: #9cc5ff;
+  --header-bg: rgba(11, 15, 20, 0.92);
+}
+
+[data-theme="light"] {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --text: #17212b;
+  --muted: #556273;
+  --line: #d7e0ea;
+  --link: #165ecf;
+  --header-bg: rgba(247, 249, 252, 0.92);
 }
 
 * {
@@ -30,7 +41,7 @@ body {
 
 .site-header {
   border-bottom: 1px solid var(--line);
-  background: rgba(11, 15, 20, 0.92);
+  background: var(--header-bg);
   position: sticky;
   top: 0;
   backdrop-filter: blur(8px);
@@ -41,6 +52,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.9rem 0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }
 
 .brand {
@@ -62,6 +79,20 @@ nav a {
 
 nav a:hover {
   color: var(--text);
+}
+
+.theme-toggle {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--muted);
 }
 
 .main {
@@ -126,8 +157,12 @@ a {
 
 @media (max-width: 640px) {
   .nav {
-    flex-direction: column;
     align-items: flex-start;
-    gap: 0.45rem;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.35rem;
   }
 }
