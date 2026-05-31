@@ -8,75 +8,8 @@
       name="description"
       content="Experimenting with Qwen3 TTS: fine-tuning journey, LoRA experiments, and quantization tradeoffs."
     />
+    <link rel="stylesheet" href="../styles.css" />
     <style>
-      :root {
-        --bg: #0b0f14;
-        --surface: #10161d;
-        --text: #e7edf5;
-        --muted: #9ba9bb;
-        --line: #202a36;
-        --link: #9cc5ff;
-        --header-bg: rgba(11, 15, 20, 0.92);
-      }
-
-      [data-theme="light"] {
-        --bg: #f7f9fc;
-        --surface: #ffffff;
-        --text: #17212b;
-        --muted: #556273;
-        --line: #d7e0ea;
-        --link: #165ecf;
-        --header-bg: rgba(247, 249, 252, 0.92);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-        line-height: 1.7;
-      }
-
-      .container {
-        width: min(760px, 92%);
-        margin: 0 auto;
-      }
-
-      .site-header {
-        border-bottom: 1px solid var(--line);
-        background: var(--header-bg);
-        position: sticky;
-        top: 0;
-        backdrop-filter: blur(8px);
-      }
-
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.9rem 0;
-      }
-
-      .brand {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 700;
-      }
-
-      .theme-toggle {
-        border: 1px solid var(--line);
-        background: var(--surface);
-        color: var(--text);
-        border-radius: 6px;
-        padding: 0.35rem 0.65rem;
-        font-size: 0.88rem;
-        cursor: pointer;
-      }
-
       main.container {
         padding: 2rem 0 3rem;
       }
@@ -88,11 +21,6 @@
         text-decoration: none;
       }
 
-      h1 {
-        margin: 0 0 0.5rem;
-        line-height: 1.2;
-      }
-
       .meta {
         color: var(--muted);
         margin-bottom: 1.1rem;
@@ -102,28 +30,27 @@
         border-top: 1px solid var(--line);
         padding-top: 1rem;
       }
-
-      p {
-        margin: 0 0 1rem;
-      }
-
-      a {
-        color: var(--link);
-      }
     </style>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="../index.html">Ravi Kumar</a>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode">🌙</button>
+        <a class="brand" href="../index.html#home">Ravikant K.</a>
+        <div class="nav-right">
+          <nav>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+            <a href="../index.html#blogs">Blogs</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode"></button>
+        </div>
       </div>
     </header>
 
     <main class="container">
-      <a class="back" href="../index.html#blogs">← Back to blogs</a>
+      <a class="back" href="../index.html#blogs">&larr; Back to blogs</a>
       <h1>Experimenting with Qwen3 TTS</h1>
-      <p class="meta">By Ravi Kumar</p>
+      <p class="meta">By Ravikant K.</p>
       <article>
         <p>
           It was the second week of April. I had left my incubation role at a
@@ -160,33 +87,44 @@
           bit. We eventually published the model on Hugging Face as well.
         </p>
         <p>
-          Here’s the link if you want to check it out:
+          Here's the link if you want to check it out:
           <a href="https://huggingface.co/aguken-ai/Qwen-3-TTS-12Hz-0.6B-Base-hi-LoRA-Finetuned-BNB-NF4" target="_blank" rel="noopener noreferrer">Hugging Face Model</a>.
         </p>
       </article>
     </main>
 
     <script>
-      const root = document.documentElement;
-      const themeToggle = document.getElementById("theme-toggle");
-      const savedTheme = localStorage.getItem("theme");
+      (() => {
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("theme-toggle");
+        const storage = {
+          get(key) {
+            try {
+              return localStorage.getItem(key);
+            } catch {
+              return null;
+            }
+          },
+          set(key, value) {
+            try {
+              localStorage.setItem(key, value);
+            } catch {}
+          }
+        };
 
-      function setTheme(theme) {
-        root.setAttribute("data-theme", theme);
-        themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
-        localStorage.setItem("theme", theme);
-      }
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          storage.set("theme", theme);
+        }
 
-      if (savedTheme === "light" || savedTheme === "dark") {
-        setTheme(savedTheme);
-      } else {
-        setTheme("dark");
-      }
+        const savedTheme = storage.get("theme");
+        setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark");
 
-      themeToggle.addEventListener("click", () => {
-        const current = root.getAttribute("data-theme");
-        setTheme(current === "dark" ? "light" : "dark");
-      });
+        themeToggle.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme");
+          setTheme(current === "dark" ? "light" : "dark");
+        });
+      })();
     </script>
   </body>
 </html>
