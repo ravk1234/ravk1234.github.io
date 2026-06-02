@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a voice ai first app for visually impaired | Ravikant K.</title>
+    <meta
+      name="description"
+      content="Building a voice ai first app for visually impaired."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      main.container {
+        padding: 2rem 0 3rem;
+      }
+
+      .back {
+        display: inline-block;
+        margin-bottom: 1.2rem;
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      .meta {
+        color: var(--muted);
+        margin-bottom: 1.1rem;
+      }
+
+      article {
+        border-top: 1px solid var(--line);
+        padding-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="../index.html#home">Ravikant K.</a>
+        <div class="nav-right">
+          <nav>
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+            <a href="../index.html#blogs">Blogs</a>
+          </nav>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle read mode"></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <a class="back" href="../index.html#blogs">&larr; Back to blogs</a>
+      <h1>Building a voice ai first app for visually impaired</h1>
+      <p class="meta">By Ravikant K.</p>
+      <article>
+        <p>
+          I had gone to give interview to Global Shapers Community for their volunteer role. Their they had given a case study for a project they were doing 
+          called  Eyes of Good Hope in which they they were helping visually impaired people with finding scribes. They had divided us in a group and given us 
+          a case study on what can be done to scale the project. I had suggested an idea when we were discussing in the group that we should build a gamified app where people who are 
+          are interested in becoming volunteers can join the app and give tests on the app. so we know how serious are these folks and how much good are they. Then whoever is interested in booking a scribe
+          can choose the best scribe based on the score and location and availablity. I was not ultimately selected for the volunteer but I had told the team that I was interested in making the app. after 2 weeks, I found a role 
+          where a startup was hiring for a creative engineer role and was asking what stuff one had built instead of a CV. So, I thought of making the same app. I built it in around 1 week. I even connected back with the Global Shapers Community team
+          and we decided that we will launch it in 1-2 months. I want this app to be more than just a scribe  booking app. I want it to be a superapp where differently abled people can use it to get stuff done. 
+
+        </p>
+      </article>
+    </main>
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("theme-toggle");
+        const storage = {
+          get(key) {
+            try {
+              return localStorage.getItem(key);
+            } catch {
+              return null;
+            }
+          },
+          set(key, value) {
+            try {
+              localStorage.setItem(key, value);
+            } catch {}
+          }
+        };
+
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          storage.set("theme", theme);
+        }
+
+        const savedTheme = storage.get("theme");
+        setTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : "dark");
+
+        themeToggle.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme");
+          setTheme(current === "dark" ? "light" : "dark");
+        });
+      })();
+    </script>
+  </body>
+</html>
